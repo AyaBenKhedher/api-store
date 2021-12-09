@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+<div class="container">
+<h1 class="title p-1">{{ article.title }}</h1>
+   <div class="img-fluid">
+       <img  width="100%" src="/bundles/easyadmin/images/{{ article.image}}" alt="{{ article.title}}" />
+    </div>
+   <div class="content">
+     <p class="date"> Ecrit le {{ article.createdAt | date("d/m/Y") }} a {{ article.createdAt | date("H:i") }}
+     par <span class="author">{{ article.author}} </span></p>
+          <h2 class="title">{{ article.title }}</h2>
+    <p class="content text-justify">
+      {{ article.content | raw }}
+    </p> 
+   </div>  
+</div>
+
+{% endblock %}
+
+      

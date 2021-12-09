@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Acceuil {% endblock %}
+
+{% block body %}
+
+<h1> Bienvenue sur ma Restaurant</h1>
+<div class="row">
+   {% for article in articles %}
+
+ <div class="card col-md-4" style="width: 18rem;">
+      <p class="date"> Ecrit le {{ article.createdAt | date("d/m/Y") }} a {{ article.createdAt | date("H:i") }}
+         par <span class="author">{{ article.author}} </span>
+      </p>
+    <img class="card-img-top" src="/bundles/easyadmin/images/{{ article.image }}"  alt="{{ article.title}}" />
+    <div class="card-body">
+       <h5 class="card-title">{{ article.title }}</h5>
+      
+       <a href="{{ path('show', {'id':article.id})}}" class="btn btn-primary">En savoir plus</a>
+       <span class="react-like"></span>
+       </div>
+    </div>
+
+   {% endfor %}
+ <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+ <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+ <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>  
+ <script src="js/posts.js" type="text/babel"></script>
+</div>
+
+{% endblock %}
